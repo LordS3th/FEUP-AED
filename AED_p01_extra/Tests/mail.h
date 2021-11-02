@@ -20,6 +20,7 @@ class RegularMail: public Mail {
 	unsigned int weight;
 public:
 	RegularMail(string send, string rec, string code, unsigned int w);
+    unsigned int getPrice() const;
 };
 
 
@@ -27,6 +28,7 @@ class GreenMail: public Mail {
 	string type;  // "envelope", "bag", "box"
 public:
 	GreenMail(string send, string rec, string code, string t);
+    unsigned int getPrice() const;
 };
 
 

@@ -1,6 +1,7 @@
 #include "postOffice.h"
 #include <string>
 
+ using namespace std;
 PostOffice::PostOffice(string firstZCode, string lastZCode):
 								firstZipCode(firstZCode), lastZipCode(lastZCode)
 {}
@@ -35,8 +36,16 @@ vector<Postman> PostOffice::getPostman() const {
 
 // TODO
 vector<Mail *> PostOffice::removePostman(string name) {
-	vector<Mail *> res;
-	return res;
+	for (int i=0; i < postmen.size(); i++){
+        if (postmen[i].getName() == name){
+            vector<Mail *> m;
+            m= postmen[i].getMail();
+            postmen.erase( postmen.begin()+i);
+            return m;
+        }
+    }
+    vector<Mail *> empty;
+    return empty;
 }
 
 // TODO
