@@ -30,7 +30,10 @@ public:
 class NoPostmanException
 {
 public:
-	   string getName() const {return ""; }
+       string name;
+	   string getName() const {
+           return name;
+       }
 };
 
 
