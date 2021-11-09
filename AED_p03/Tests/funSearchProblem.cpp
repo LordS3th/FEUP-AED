@@ -1,5 +1,4 @@
 #include "funSearchProblem.h"
-
 FunSearchProblem::FunSearchProblem() {}
 
 //-----------------------------------------------------------------
@@ -16,13 +15,38 @@ int FunSearchProblem::facingSun(const vector<int> & values) {
 
 // TODO
 int FunSearchProblem::squareR(int num) {
-    return 0;
+    if (num==0){
+        return 0;
+    }
+    else if (num==1){
+        return 1;
+    }
+    else {
+        int left=1;
+        int right = num;
+        int middle=0;
+        while (left <=right) {
+             floor(middle = (left + right)/2);
+            if (middle * middle < num) {
+                left = middle + 1;
+            } else if (middle * middle > num) {
+                right = middle - 1;
+            } else return middle;
+        }
+        return right;
+    }
 }
 
 
 // TODO
 int FunSearchProblem::smallestMissingValue(const vector<int> & values) {
-    return 0;
+    int n=0;
+    for (int i =0;i<values.size();i++){
+        if (n==values[i]){
+            n++;
+        }
+    }
+    return n;
 }
 
 // TODO
