@@ -51,6 +51,6 @@ int FunSearchProblem::smallestMissingValue(const vector<int> & values) {
 
 // TODO
 int FunSearchProblem::minPages(const vector<int> & values, int numSt) {
-    return 0;
+
 }
 
