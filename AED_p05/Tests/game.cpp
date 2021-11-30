@@ -49,22 +49,24 @@ void Game::setKids(const list<Kid>& l1) {
 
 // TODO
 Kid Game::loseGame(string phrase) {
-    list<Kid>::iterator it = kids.begin();
+    list<Kid> new_list = kids;
+    list<Kid>::iterator it;
+    it= new_list.begin();
     int num = numberOfWords(phrase);
-    while (kids.size() > 1) {
+    while (new_list.size() > 1) {
         int jumps= num;
-        while(kids.size()<jumps){
-            jumps-=kids.size();
+        while(new_list.size()<jumps){
+            jumps-=new_list.size();
         }
         for (int i = 0; i < jumps; i++) {
             it++;
-            if(i > kids.size()-1){
-                it=kids.begin();
+            if(it != new_list.end()){
+                it=new_list.begin();
             }
         }
-        kids.erase(it);
+        new_list.erase(it);
     }
-    return kids.front();
+    return new_list.front();
 }
 // TODO
 list<Kid> Game::removeOlder(unsigned id) {
