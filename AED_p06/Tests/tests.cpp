@@ -42,7 +42,7 @@ TEST(test_1, b_printDictionary) {
     f.close();
     d1.print();
 }
-
+/*
 TEST(test_1, c_consultDictionary) {
     cout<<endl<<"Testing 'consultDictionary'"<<endl;
     ifstream fich;
@@ -168,3 +168,4 @@ TEST(test_2, c_MostVisited) {
     game1.play(); game1.play(); game1.play();game1.play();
     EXPECT_EQ(4, game1.mostVisited());
 }
+*/

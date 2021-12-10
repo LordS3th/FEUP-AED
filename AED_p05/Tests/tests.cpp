@@ -96,7 +96,7 @@ TEST(test_1, b_loseGame){
     cx = game3.loseGame(s);
     EXPECT_EQ("Ana", cx.getName());
 }
-/*
+
 TEST(test_1, c_rearrange){
     cout<<endl<<"Testing 'rearrange'"<<endl;
     Kid c1("Rui",6,'m');
@@ -135,7 +135,6 @@ TEST(test_1, c_rearrange){
         }
     }
 }
-
 
 TEST(test_1, d_removeOlder){
     cout<<endl<<"Testing 'removeOlder'"<<endl;
@@ -195,7 +194,7 @@ TEST(test_1, e_GameEqual){
     game2.setKids(kids2);
     EXPECT_EQ(false, game1 == game2);
 }
-
+/*
 TEST(test_1, f_Shuffle){
     cout<<endl<<"Testing 'shuffle'"<<endl;
     list<Kid> kids;
@@ -223,7 +222,7 @@ TEST(test_1, f_Shuffle){
     Game game2(kids2);
     EXPECT_EQ(false, game1 == game2);
 }
-
+*/
 TEST(test_2, FindMin){
     StackExt<int> s1;
     // Testing empty()
@@ -283,4 +282,3 @@ TEST(test_2, FindMin){
     // NOTE: parameter 10 means that values in the range [-10, 10] are considered constant
     EXPECT_EQ(true, isConstant(elapsedTime, size, 10));
 }
-*/

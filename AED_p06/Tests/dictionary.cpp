@@ -27,12 +27,26 @@ BST<WordMean> Dictionary::getWords() const {
 	return words;
 }
 
+bool operator<(const WordMean &a, const WordMean &b) {
+    return (a.word < b.word);
+}
+ostream & operator << (ostream& out, const WordMean& w){
+    out << w.word << endl << w.meaning;
+    return out;
+}
+
 // ---------------------------------------------
 
 //TODO
 void Dictionary::readFile(ifstream &f) {
+    while (!f.eof()) {
+        string word;
+        string meaning;
+        getline(f, word);
+        getline(f, meaning);
+        words.insert(WordMean(word, meaning));
+    }
 }
-
 //TODO
 string Dictionary::consult(string word1, WordMean& previous, WordMean& next) const {
     return "";
@@ -45,4 +59,5 @@ bool Dictionary::update(string word1, string mean1) {
 
 //TODO
 void Dictionary::print() const {
+    words.printTree();
 }

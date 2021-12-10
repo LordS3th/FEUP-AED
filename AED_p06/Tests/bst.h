@@ -239,6 +239,9 @@ void BST<Comparable>::printTree(BinaryNode<Comparable>* t) const {
         cout << t->element << endl;
         printTree(t->right);
     }
+
+
+
 }
 
 template <class Comparable>

@@ -7,6 +7,9 @@
 class WordMean {
     string word;
     string meaning;
+    friend bool operator < (const WordMean & a, const WordMean & b);
+    friend ostream& operator << (ostream& out, const WordMean&  w);
+
 public:
     WordMean(string w, string m);
     string getWord() const;

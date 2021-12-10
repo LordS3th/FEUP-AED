@@ -41,46 +41,107 @@ list<Kid> Game::getKids() const {
 
 // TODO
 void Game::setKids(const list<Kid>& l1) {
-    for (auto it = l1.begin(); it!= l1.end();it++){
-        Kid k1;
-        kids.push_back(*it);
-    }
+    this->kids = l1;
 }
 
 // TODO
 Kid Game::loseGame(string phrase) {
     list<Kid> new_list = kids;
     list<Kid>::iterator it;
-    it= new_list.begin();
-    int num = numberOfWords(phrase);
-    while (new_list.size() > 1) {
-        int jumps= num;
-        while(new_list.size()<jumps){
-            jumps-=new_list.size();
-        }
+    it=new_list.begin();
+    int num= numberOfWords(phrase);
+    while(new_list.size()>1) {
+        int jumps = new_list.size()%num-1;
         for (int i = 0; i < jumps; i++) {
-            it++;
-            if(it != new_list.end()){
-                it=new_list.begin();
+            if (it == prev(new_list.end())) {
+                it = new_list.begin();
+            } else {
+                it++;
             }
         }
-        new_list.erase(it);
+        if (it == prev(new_list.end())) {
+            it = new_list.erase(it);
+            it = new_list.begin();
+        } else it = new_list.erase(it);
     }
     return new_list.front();
 }
 // TODO
 list<Kid> Game::removeOlder(unsigned id) {
-    return (list<Kid>());
+    list<Kid>::iterator it;
+    list <Kid> res;
+    for (it=kids.begin(); it!=kids.end();it++){
+        if ((*it).getAge() > id){
+            res.push_back(*it);
+            kids.erase(it);
+            it--;
+        }
+    }
+    return res;
 }
 
 // TODO
 queue<Kid> Game::rearrange() {
-    return(queue<Kid>());
+    queue<Kid> female;
+    queue<Kid> male;
+    queue<Kid> res;
+    int n, m;
+    list<Kid>::iterator it;
+    for ( it=kids.begin() ; it!= kids.end();it++){
+        if ((*it).getSex()== 'f'){
+            female.push(*it);
+        }
+        else male.push(*it);
+    }
+    kids.clear();
+    if (female.size() < male.size()){
+        n=1;
+        m=male.size()/female.size();
+        }
+    else {
+        m=1;
+        n=female.size()/male.size();
+    }
+    while(true){
+        if (female.size()<n){
+            break;
+        }
+        for (int i=1; i <=n;i++){
+            kids.push_back(female.front());
+            female.pop();
+        }
+        if (male.size()< m){
+            break;
+        }
+        for (int i = 1; i <=m;i++){
+            kids.push_back(male.front());
+            male.pop();
+        }
+    }
+    while (female.size()!=0){
+        res.push(female.front());
+        female.pop();
+    }
+    while (male.size()!=0){
+        res.push(male.front());
+        male.pop();
+    }
+    return (res) ;
 }
+
+
 
 // TODO
 bool Game::operator==(Game& g2) {
-	return true;
+    list<Kid>::iterator it_1, it_2;
+    it_1=kids.begin();
+    it_2=g2.kids.begin();
+    for ( it_1; it_1 != kids.end(); it_1++, it_2++){
+        if (!(*it_1 == *it_2)){
+            return false;
+        }
+    }
+    return true;
 }
 
 // TODO
